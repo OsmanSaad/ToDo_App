@@ -25,7 +25,7 @@ fun setDate(textview:TextView,date:Long){
 fun setDataList (recyclerView:RecyclerView,data:List<Task>?){
    var adapter =  recyclerView.adapter as toDoList_Adapter
 
-    //adapter.data = data
+
     if(data!=null)
         adapter.setdata(data)
     else{

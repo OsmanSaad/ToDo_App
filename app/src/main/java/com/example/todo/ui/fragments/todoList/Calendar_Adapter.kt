@@ -17,9 +17,11 @@ import com.example.todo.ui.fragments.todoList.Calendar_Adapter.DayViewContainer
 import com.kizitonwose.calendar.view.CalendarView
 import com.kizitonwose.calendar.view.WeekCalendarView
 import java.time.LocalDate
+import kotlin.time.Duration.Companion.days
 
 class Calendar_Adapter(val calendarView: WeekCalendarView, val context:Context): WeekDayBinder<DayViewContainer> {
     private var selectedDate: LocalDate? = null
+    lateinit var onSelectedDateListner: OnSelectedDateListner
     override fun create(view: View):DayViewContainer {
         return DayViewContainer(CalenderItemsBinding.bind(view))
     }
@@ -33,6 +35,12 @@ class Calendar_Adapter(val calendarView: WeekCalendarView, val context:Context):
 
         container.view.setOnClickListener {
             manageDateSelectionClick(data)
+            if(selectedDate!=null){
+                onSelectedDateListner.onSelectedDate(selectedDate!!)
+            }
+            else{
+                onSelectedDateListner.onSelectedDate(null)
+            }
         }
 
         manageSelectedDateClor(container,data)
@@ -51,6 +59,7 @@ class Calendar_Adapter(val calendarView: WeekCalendarView, val context:Context):
             calendarView.notifyDateChanged(currentSelection)
         } else {
             selectedDate = data.date
+            Log.d("Tag","Class $selectedDate")
             // Reload the newly selected date so the dayBinder is
             // called and we can ADD the selection background.
             calendarView.notifyDateChanged(data.date)
