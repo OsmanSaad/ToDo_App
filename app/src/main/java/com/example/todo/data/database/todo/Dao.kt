@@ -8,6 +8,7 @@ import androidx.room.Update
 import com.example.todo.data.models.Task
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
+import java.util.Date
 
 @Dao
 interface Dao {
@@ -25,5 +26,5 @@ interface Dao {
     fun gatAllTodo():Observable<List<Task>>
 
     @Query("SELECT * FROM Task WHERE date ==:date ")
-    fun getTodoByDate(date:String):Observable<List<Task>>
+    fun getTodoByDate(date: Date):Observable<List<Task>>
 }

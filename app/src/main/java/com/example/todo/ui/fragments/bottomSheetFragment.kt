@@ -49,7 +49,7 @@ class bottomSheetFragment : BottomSheetDialogFragment() {
         binding.taskDate.setOnClickListener {
             showDatePicker(calender)
         }
-        viewModel.convertDate(calender)
+        viewModel.InitialDate(calender)
 
         binding.saveTask.setOnClickListener {
             viewModel.saveToDo { dismiss() }
@@ -62,7 +62,7 @@ class bottomSheetFragment : BottomSheetDialogFragment() {
         val datePickerDialog = DatePickerDialog(requireContext())
         datePickerDialog.setOnDateSetListener { view, year, month, dayOfMonth ->
              calendar.set(year,month,dayOfMonth)
-            viewModel.convertDate(calender)
+            viewModel.InitialDate(calendar)
 
         }
 

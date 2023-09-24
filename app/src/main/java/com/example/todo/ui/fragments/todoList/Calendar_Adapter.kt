@@ -17,6 +17,7 @@ import com.example.todo.ui.fragments.todoList.Calendar_Adapter.DayViewContainer
 import com.kizitonwose.calendar.view.CalendarView
 import com.kizitonwose.calendar.view.WeekCalendarView
 import java.time.LocalDate
+import java.util.Date
 import kotlin.time.Duration.Companion.days
 
 class Calendar_Adapter(val calendarView: WeekCalendarView, val context:Context): WeekDayBinder<DayViewContainer> {
