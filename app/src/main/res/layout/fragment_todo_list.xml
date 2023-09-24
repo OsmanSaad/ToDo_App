@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.todo.ui.Viewmodel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.todoList.todoListFragment"
+        android:background="@color/light_green">
+
+        <include layout="@layout/view" />
+
+        <com.kizitonwose.calendar.view.WeekCalendarView
+            android:id="@+id/calenderview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cv_daySize="freeForm"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/calender_items"
+            app:cv_dayViewResource="@layout/calender_items"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            itemList="@{viewmodel.todoItem}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calenderview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/todo_item" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
