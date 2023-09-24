@@ -100,7 +100,7 @@
             android:id="@+id/task_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={viewModel.todo_date}"
+            android:text="@={viewModel.todo_dateFormated}"
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="22sp"
