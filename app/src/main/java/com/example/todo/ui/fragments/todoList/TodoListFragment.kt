@@ -68,6 +68,7 @@ class TodoListFragment : Fragment() {
             }
         }
         adapter.onItemDoneClickListner = viewmodel
+        adapter.onItemDeleteListner = viewmodel
 
     }
 

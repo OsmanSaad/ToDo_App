@@ -80,7 +80,7 @@
             android:contentDescription="add_todo"
             android:onClick="onclickAddTask"
             app:backgroundTint="@color/blue"
-            android:background="@color/white"
+            android:tint="@color/white"
             app:layout_anchor="@id/bottom_app_bar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
