@@ -10,6 +10,7 @@ import com.example.todo.data.database.todo.MyDatabase
 import com.example.todo.data.models.Task
 import com.example.todo.domain.DataValidation
 import com.example.todo.domain.DateCasting
+import com.example.todo.ui.fragments.todoList.OnItemDeleteListner
 import com.example.todo.ui.fragments.todoList.OnItemDoneClickListner
 import com.example.todo.ui.fragments.todoList.OnSelectedDateSendListner
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -23,7 +24,7 @@ import java.util.Date
 import java.util.concurrent.TimeUnit
 
 @RequiresApi(Build.VERSION_CODES.O)
-class Viewmodel:ViewModel(),OnSelectedDateSendListner,OnItemDoneClickListner {
+class Viewmodel:ViewModel(),OnSelectedDateSendListner,OnItemDoneClickListner,OnItemDeleteListner{
     /** Items Live Data*/
     private var _todoItem =  MutableLiveData<List<Task>>()
     val todoItem:LiveData<List<Task>> = _todoItem
@@ -118,13 +119,23 @@ class Viewmodel:ViewModel(),OnSelectedDateSendListner,OnItemDoneClickListner {
         todo_dateFormated.postValue(todoDate)
     }
 
-    fun updateIsDone(task:Task) {
+    private fun updateIsDone(task:Task) {
         dao.updateTodo(task).subscribeOn(Schedulers.io())
             .subscribe()
 
     }
 
+    private fun deleteTODO(task:Task){
+        dao.deleteTodo(task)
+            .subscribeOn(Schedulers.io())
+            .subscribe()
+    }
+
     override fun OnItemDoneClick(task: Task) {
         updateIsDone(task)
+    }
+
+    override fun onItemDelete(task: Task) {
+        deleteTODO(task)
     }
 }
