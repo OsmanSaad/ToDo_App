@@ -1,30 +1,26 @@
-package com.example.todo.ui
+package com.example.todo.ui.viewmodel
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.todo.convertTimeToZero
 import com.example.todo.data.database.todo.MyDatabase
 import com.example.todo.data.models.Task
 import com.example.todo.domain.DataValidation
 import com.example.todo.domain.DateCasting
-import com.example.todo.ui.fragments.todoList.OnItemDeleteListner
-import com.example.todo.ui.fragments.todoList.OnItemDoneClickListner
-import com.example.todo.ui.fragments.todoList.OnSelectedDateSendListner
+import com.example.todo.ui.fragments.todoList.listner.OnItemDeleteListner
+import com.example.todo.ui.fragments.todoList.listner.OnItemDoneClickListner
+import com.example.todo.ui.fragments.todoList.listner.OnSelectedDateSendListner
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import kotlinx.coroutines.delay
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.Month
 import java.util.Calendar
 import java.util.Date
-import java.util.concurrent.TimeUnit
 
 @RequiresApi(Build.VERSION_CODES.O)
-class Viewmodel:ViewModel(),OnSelectedDateSendListner,OnItemDoneClickListner,OnItemDeleteListner{
+class Viewmodel:ViewModel(), OnSelectedDateSendListner, OnItemDoneClickListner,
+    OnItemDeleteListner {
     /** Items Live Data*/
     private var _todoItem =  MutableLiveData<List<Task>>()
     val todoItem:LiveData<List<Task>> = _todoItem
@@ -32,7 +28,7 @@ class Viewmodel:ViewModel(),OnSelectedDateSendListner,OnItemDoneClickListner,OnI
     /**Task Details */
     val todo_title =  MutableLiveData<String>()
     val todo_description =  MutableLiveData<String>()
-    val todo_dateFormated =  MutableLiveData(DateCasting.formateDate(Date()))
+    val todo_dateFormated =  MutableLiveData(DateCasting.formateDate(Date().toString()))
     val todo_TimeSpam =  MutableLiveData<Date>()
     val todo_isdone =  MutableLiveData<Boolean>()
 
@@ -48,7 +44,7 @@ class Viewmodel:ViewModel(),OnSelectedDateSendListner,OnItemDoneClickListner,OnI
     val dao = MyDatabase.getInstance().getDao()
 
     init {
-        Log.d("Tag","Initialize")
+        Log.d("Tag","Initialize"+Date())
         getAllData()
     }
 

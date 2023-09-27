@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <attr name="appImage" format="reference" />  <!-- Base application theme. -->
     <style name="Base.Theme.ToDo" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/blue</item>
@@ -13,4 +13,48 @@
     </style>
 
     <style name="Theme.ToDo" parent="Base.Theme.ToDo" />
+    <style name="splashBackGround">
+        <item name="android:background">@drawable/splash</item>
+    </style>
+
+    <style name="FragmentTitle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Fragmentbackground">
+        <item name="android:background">@color/light_green</item>
+    </style>
+
+    <style name="CalanderItemBackGround">
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+
+    <style name="CalanderItemText">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    
+    <style name="card">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="card_view">
+        <item name="android:background">@color/blue</item>
+    </style>
+
+    <style name="cardTitle">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+    <style name="cardDate">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:drawableTint">@color/black</item>
+    </style>
+    <style name="arrowBackColor">
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="spinnerbackground">
+        <item name="android:background">@drawable/spinner_bg_light</item>
+    </style>
+<style name="card.bottom_nav" parent="ThemeOverlay.Material3.BottomAppBar"></style>
+
 </resources>

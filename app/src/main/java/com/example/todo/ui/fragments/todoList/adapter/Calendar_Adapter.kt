@@ -1,28 +1,30 @@
-package com.example.todo.ui.fragments.todoList
+package com.example.todo.ui.fragments.todoList.adapter
 
 import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.example.todo.R
 import com.example.todo.databinding.CalenderItemsBinding
+import com.example.todo.domain.Constatns
 import com.kizitonwose.calendar.core.WeekDay
 import com.kizitonwose.calendar.view.ViewContainer
 import com.kizitonwose.calendar.view.WeekDayBinder
 import java.time.format.TextStyle
 import java.util.Locale
-import com.example.todo.ui.fragments.todoList.Calendar_Adapter.DayViewContainer
-import com.kizitonwose.calendar.view.CalendarView
+import com.example.todo.ui.fragments.todoList.adapter.Calendar_Adapter.DayViewContainer
+import com.example.todo.ui.fragments.todoList.listner.OnSelectedDateListner
 import com.kizitonwose.calendar.view.WeekCalendarView
 import java.time.LocalDate
-import java.util.Date
-import kotlin.time.Duration.Companion.days
 
 class Calendar_Adapter(val calendarView: WeekCalendarView, val context:Context): WeekDayBinder<DayViewContainer> {
     private var selectedDate: LocalDate? = null
     lateinit var onSelectedDateListner: OnSelectedDateListner
+     var sharedPreferences = context.getSharedPreferences("AppSettings",Context.MODE_PRIVATE)
+
     override fun create(view: View):DayViewContainer {
         return DayViewContainer(CalenderItemsBinding.bind(view))
     }
@@ -30,7 +32,7 @@ class Calendar_Adapter(val calendarView: WeekCalendarView, val context:Context):
     override fun bind(container: DayViewContainer, data: WeekDay) {
         container.binding.dayName.text = data.date.dayOfWeek.getDisplayName(
             TextStyle.SHORT,
-            Locale.getDefault()
+            Locale(sharedPreferences.getString(Constatns.LANGUAGE_KEY,"en"))
         )
         container.binding.daydigit.text = data.date.dayOfMonth.toString()
 
@@ -75,16 +77,21 @@ class Calendar_Adapter(val calendarView: WeekCalendarView, val context:Context):
 
     private fun manageSelectedDateClor(container: DayViewContainer, data: WeekDay){
         if (data.date == selectedDate) {
-            container.binding.dayName
-                .setTextColor(ContextCompat.getColor(context, R.color.blue))
-            container.binding.daydigit
-                .setTextColor(ContextCompat.getColor(context, R.color.blue))
-
-        } else {
-            container.binding.dayName
-                .setTextColor(ContextCompat.getColor(context, R.color.black))
-            container.binding.daydigit
-                .setTextColor(ContextCompat.getColor(context, R.color.black))
+            calanderItemColor(container,R.color.blue)
         }
+        else {
+            if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+                calanderItemColor(container,R.color.white)
+            }
+            else
+                calanderItemColor(container,R.color.black)
+        }
+    }
+
+    private fun calanderItemColor(container:DayViewContainer,color:Int){
+        container.binding.dayName
+            .setTextColor(ContextCompat.getColor(context, color))
+        container.binding.daydigit
+            .setTextColor(ContextCompat.getColor(context, color))
     }
 }

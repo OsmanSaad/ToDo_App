@@ -3,12 +3,10 @@ package com.example.todo.ui.fragments.todoList
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -16,11 +14,14 @@ import com.example.todo.R
 import com.example.todo.data.models.Task
 import com.example.todo.databinding.FragmentTodoListBinding
 import com.example.todo.domain.Constatns
-import com.example.todo.ui.Viewmodel
+import com.example.todo.ui.viewmodel.Viewmodel
+import com.example.todo.ui.fragments.todoList.adapter.Calendar_Adapter
+import com.example.todo.ui.fragments.todoList.adapter.toDoList_Adapter
+import com.example.todo.ui.fragments.todoList.listner.OnItemClickListner
+import com.example.todo.ui.fragments.todoList.listner.OnSelectedDateListner
 import com.example.todo.ui.todoDeatailsActivity
 import com.kizitonwose.calendar.core.atStartOfMonth
 import com.kizitonwose.calendar.core.firstDayOfWeekFromLocale
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.YearMonth
 
@@ -28,8 +29,8 @@ import java.time.YearMonth
 class TodoListFragment : Fragment() {
    lateinit var binding:FragmentTodoListBinding
    lateinit var adapter : toDoList_Adapter
-   lateinit var viewmodel:Viewmodel
-   lateinit var adabter2:Calendar_Adapter
+   lateinit var viewmodel: Viewmodel
+   lateinit var adabter2: Calendar_Adapter
    @RequiresApi(Build.VERSION_CODES.O)
    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +43,7 @@ class TodoListFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        adapter = toDoList_Adapter(emptyList(),object :OnItemClickListner{
+        adapter = toDoList_Adapter(emptyList(),object : OnItemClickListner {
             override fun onItemClick(position: Int, task: Task) {
                 moveToDetailsActivity(task)
             }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ToDo</string>
+
+    <string name="todo_app">المهام القادمه</string>
+    <string name="done"> تمت!</string>
+
+    <string name="language_text">الغه</string>
+    <string name="mode">الوضع</string>
+    <string name="settings">الاعدادات</string>
+    <string name="add_new_task">اضافه مهمه جديده</string>
+    <string name="task_title_hint">عنوان المهمه</string>
+    <string name="task_description_hint">وصف المهمه</string>
+    <string name="select_date">اختر تاريخ</string>
+    <string name="save">حفظ</string>
+
+    <string name="edit_todo">تعديل المهمه</string>
+    <string name="edit_task_title">تعديل المهمه</string>
+    <string name="task_title_edit_hint">عنوان المهمه</string>
+    <string name="task_description_edit_hint">وصف المهمه</string>
+    <string name="select_date_edit">اخنر التاريخ</string>
+    <string name="save_changes">حفظ التغيرات</string>
+    <string name="validate_title">العنوان مطلوب</string>
+    <string name="validate_describtion">الوصف مطلوب</string>
+    <string-array name="lang">
+        <item>الغه</item>
+        <item>النظام</item>
+        <item>الانجليزيه</item>
+        <item>العربيه</item>
+    </string-array>
+
+    <string-array name="mode">
+        <item>الوضع</item>
+        <item>النظام</item>
+        <item> الفاتح </item>
+        <item> الداكن</item>
+    </string-array>
+</resources>

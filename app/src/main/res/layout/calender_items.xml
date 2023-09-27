@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
+        style="@style/CalanderItemBackGround"
         android:layout_margin="12dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,9 +24,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Sun"
+                style="@style/CalanderItemText"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
                 android:layout_marginVertical="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +40,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_marginVertical="8dp"
-                android:textColor="@color/black"
+                style="@style/CalanderItemText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dayName"

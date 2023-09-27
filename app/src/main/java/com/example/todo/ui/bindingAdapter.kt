@@ -1,15 +1,11 @@
 package com.example.todo.ui
 
-import android.annotation.SuppressLint
-import android.view.View
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todo.R
 import com.example.todo.data.models.Task
 import com.example.todo.domain.DateCasting
-import com.example.todo.ui.fragments.todoList.toDoList_Adapter
+import com.example.todo.ui.fragments.todoList.adapter.toDoList_Adapter
 import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -39,7 +35,7 @@ fun setDataList (recyclerView:RecyclerView,data:List<Task>?){
 
 @BindingAdapter("DateFormate")
 fun castDate(textdateView:TextView,task:Task){
-    var date = DateCasting.formateDate(task.date)
+    var date = DateCasting.formateDate(task.date.toString())
     textdateView.text = date
 }
 //@SuppressLint("ResourceAsColor")

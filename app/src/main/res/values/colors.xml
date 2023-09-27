@@ -7,4 +7,11 @@
     <color name="gray">#C8C9CB</color>
     <color name="light_green">#DFECDB</color>
     <color name="done_color">#61E757</color>
+
+    <!-- Dark Mode Color  -->
+    <color name="bottom_nav_dark">#141922</color>
+    <color name="fragment_dark_color">#060E1E</color>
+    <color name="calandar_dark_color">#141922</color>
+    <color name="day_dark_color">#FFFFFFFF</color>
+
 </resources>

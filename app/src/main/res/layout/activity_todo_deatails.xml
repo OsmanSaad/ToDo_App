@@ -7,19 +7,20 @@
 
         <variable
             name="viewmodeldetails"
-            type="com.example.todo.ui.ToDoDetailsViewModel" />
+            type="com.example.todo.ui.viewmodel.ToDoDetailsViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_green"
+        style="@style/Fragmentbackground"
         tools:context=".ui.todoDeatailsActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -31,17 +32,21 @@
                     android:id="@+id/arrow_back"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
+                    style="@style/arrowBackColor"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="12dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/arrowback_ic" />
+                    android:src="@drawable/arrowback_ic"
+                    />
 
                 <TextView
                     android:id="@+id/toolbar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
+                    android:layout_gravity="top|start"
                     android:layout_marginStart="32dp"
-                    android:text="ToDo"
-                    android:textColor="@color/white"
+                    android:text="@string/edit_todo"
+                    style="@style/FragmentTitle"
                     android:textSize="32sp"
                     android:textStyle="bold" />
             </com.google.android.material.appbar.MaterialToolbar>
@@ -66,6 +71,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="32dp"
                 app:cardCornerRadius="15dp"
+                style="@style/card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.9"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="22dp"
-                        android:text="Edit Task"
+                        android:text="@string/edit_task_title"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +109,7 @@
                             android:id="@+id/task_title"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Task Title"
+                            android:hint="@string/task_title_edit_hint"
                             android:text="@={viewmodeldetails.todo_title}"
                             android:textSize="24sp"
                             android:textStyle="normal" />
@@ -124,7 +130,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="start"
-                            android:hint="Task Description"
+                            android:hint="@string/task_description_edit_hint"
                             android:lines="5"
                             android:maxLines="5"
                             android:minLines="5"
@@ -138,7 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="12dp"
-                        android:text="Select Date"
+                        android:text="@string/select_date_edit"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="16dp"
                         android:backgroundTint="@color/blue"
-                        android:text="Save Changes"
+                        android:text="@string/save_changes"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         android:textStyle="bold"
