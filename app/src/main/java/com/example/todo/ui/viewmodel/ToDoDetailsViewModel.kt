@@ -10,6 +10,7 @@ import com.example.todo.domain.DataValidation
 
 import com.example.todo.domain.DateCasting
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 import java.util.Calendar
@@ -17,6 +18,7 @@ import java.util.Date
 
 class ToDoDetailsViewModel:ViewModel() {
 
+    var compositeDisposable = CompositeDisposable()
     val todo_title = MutableLiveData<String>()
 
     val todo_description = MutableLiveData<String>()
@@ -38,16 +40,18 @@ class ToDoDetailsViewModel:ViewModel() {
     val dao = MyDatabase.getInstance().getDao()
     fun updateToDo(oncomplete:()->Unit){
         if(DataValidation.validateData(todo_title.value,todo_description.value,_validateTitle,_validateDescription)){
-            dao.updateTodo(Task(
-                id = todo_id.value!!,
-                title = todo_title.value!!,
-                description = todo_description.value!!,
-                date = todo_date.value!!
-            )).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    oncomplete()
-                }
+            compositeDisposable.add(
+                dao.updateTodo(Task(
+                    id = todo_id.value!!,
+                    title = todo_title.value!!,
+                    description = todo_description.value!!,
+                    date = todo_date.value!!
+                )).subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        oncomplete()
+                    }
+            )
         }
     }
 
@@ -67,7 +71,15 @@ class ToDoDetailsViewModel:ViewModel() {
     }
 
     fun isDoneUpdate(task: Task) {
-        dao.updateTodo(task)
+        compositeDisposable.add(
+            dao.updateTodo(task)
+                .subscribeOn(Schedulers.io())
+                .subscribe()
+        )
+    }
+
+    override fun onCleared() {
+        compositeDisposable.clear()
     }
 
 }
