@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewmodel"
             type="com.example.todo.ui.viewmodel.Viewmodel" />
@@ -42,7 +43,14 @@
             app:layout_constraintTop_toBottomOf="@id/calenderview"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/todo_item" />
-
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewmodel.loading?View.VISIBLE:View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
