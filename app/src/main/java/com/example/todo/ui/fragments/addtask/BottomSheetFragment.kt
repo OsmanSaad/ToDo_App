@@ -1,10 +1,9 @@
-package com.example.todo.ui.fragments
+package com.example.todo.ui.fragments.addtask
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +12,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.todo.R
 import com.example.todo.databinding.FragmentBottomSheetBinding
-import com.example.todo.ui.Viewmodel
-import com.example.todo.ui.fragments.todoList.OnSelectedDateSendListner
+import com.example.todo.ui.viewmodel.Viewmodel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.Snackbar
 import java.util.Calendar
 
 
-class bottomSheetFragment : BottomSheetDialogFragment() {
+class BottomSheetFragment : BottomSheetDialogFragment() {
     lateinit var calender:Calendar
     lateinit var binding: FragmentBottomSheetBinding
      private lateinit var viewModel: Viewmodel

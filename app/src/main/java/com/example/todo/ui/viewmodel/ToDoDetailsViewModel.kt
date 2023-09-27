@@ -1,4 +1,4 @@
-package com.example.todo.ui
+package com.example.todo.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -54,7 +54,7 @@ class ToDoDetailsViewModel:ViewModel() {
     fun initialData(task: Task){
         todo_title.postValue(task.title)
         todo_description.postValue(task.description)
-        todo_dateFormated.postValue(DateCasting.formateDate(task.date))
+        todo_dateFormated.postValue(DateCasting.formateDate(task.date.toString()))
         _todo_date.postValue(task.date)
         todo_id.postValue(task.id)
 

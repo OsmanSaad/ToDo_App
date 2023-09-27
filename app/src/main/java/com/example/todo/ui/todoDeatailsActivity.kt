@@ -2,7 +2,6 @@ package com.example.todo.ui
 
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,13 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.todo.data.models.Task
 import com.example.todo.databinding.ActivityTodoDeatailsBinding
 import com.example.todo.domain.Constatns
-import com.example.todo.ui.fragments.todoList.OnItemDoneClickListner
+import com.example.todo.ui.fragments.todoList.listner.OnItemDoneClickListner
+import com.example.todo.ui.viewmodel.ToDoDetailsViewModel
 import java.util.Calendar
 
 
-class todoDeatailsActivity : AppCompatActivity(),OnItemDoneClickListner {
+class todoDeatailsActivity : AppCompatActivity(), OnItemDoneClickListner {
     lateinit var binding: ActivityTodoDeatailsBinding
-    lateinit var viewmodelDeatails:ToDoDetailsViewModel
+    lateinit var viewmodelDeatails: ToDoDetailsViewModel
     var calender = Calendar.getInstance()
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {

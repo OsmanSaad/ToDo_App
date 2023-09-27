@@ -7,12 +7,13 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.Calendar
 import java.util.Date
+import java.util.Locale
 
 object DateCasting {
-    fun formateDate(date: Date):String{
-        val inputFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy")
+    fun formateDate(date: String):String{
+        val inputFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy",Locale.US)
         val inputDate = inputFormat.parse(date.toString())
-        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy",Locale.US)
         val outputDateString = outputFormat.format(inputDate)
         return outputDateString
     }
@@ -23,7 +24,7 @@ object DateCasting {
             currentDate = Date()
         }
         currentDate = date
-        val formatedDate =  formateDate(currentDate)
+        val formatedDate =  formateDate(currentDate.toString())
         return formatedDate
     }
 

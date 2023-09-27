@@ -2,14 +2,16 @@ package com.example.todo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.todo.R
 import com.example.todo.data.database.todo.MyDatabase
 import com.example.todo.databinding.ActivityMainBinding
-import com.example.todo.ui.fragments.SettingFragment
-import com.example.todo.ui.fragments.bottomSheetFragment
+import com.example.todo.ui.fragments.settings.SettingFragment
+import com.example.todo.ui.fragments.addtask.BottomSheetFragment
 import com.example.todo.ui.fragments.todoList.TodoListFragment
+import java.util.Date
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,15 +23,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         MyDatabase.getInstance(this)
-
+        Log.d("Tag", Date().toString())
         setupBottomNav()
-
 
 
     }
 
     fun onclickAddTask(view: View){
-        val bottomSheetFragment = bottomSheetFragment()
+        val bottomSheetFragment = BottomSheetFragment()
         bottomSheetFragment.show(supportFragmentManager,"")
     }
 
@@ -51,9 +52,13 @@ class MainActivity : AppCompatActivity() {
                     pushFragment(settingFragment)
                     true
                 }
-                else ->false
+                else ->{
+                    false
+                }
             }
         }
         binding.bottomNav.selectedItemId = R.id.todo_list
+
+
     }
 }

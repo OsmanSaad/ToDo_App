@@ -1,21 +1,23 @@
-package com.example.todo.ui.fragments.todoList
+package com.example.todo.ui.fragments.todoList.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.R
 import com.example.todo.data.models.Task
 import com.example.todo.databinding.TodoItemBinding
-import com.example.todo.ui.todoDeatailsActivity
+import com.example.todo.ui.fragments.todoList.ToDoTaskDiffUtil
+import com.example.todo.ui.fragments.todoList.listner.OnItemClickListner
+import com.example.todo.ui.fragments.todoList.listner.OnItemDeleteListner
+import com.example.todo.ui.fragments.todoList.listner.OnItemDoneClickListner
 
 class toDoList_Adapter(var data: List<Task>?, val listner: OnItemClickListner) :
     RecyclerView.Adapter<toDoList_Adapter.viewHolder>() {
     var onItemDoneClickListner: OnItemDoneClickListner? = null
-    var onItemDeleteListner:OnItemDeleteListner? =null
+    var onItemDeleteListner: OnItemDeleteListner? =null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         var binding = TodoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return viewHolder(binding)

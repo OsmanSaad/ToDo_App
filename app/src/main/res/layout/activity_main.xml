@@ -28,9 +28,10 @@
                     android:layout_height="wrap_content"
                     android:text="@string/todo_app"
                     android:textStyle="bold"
+                    style="@style/FragmentTitle"
                     android:textSize="38sp"
-                    android:layout_margin="12dp"
-                    android:textColor="@color/white" />
+                    android:layout_margin="12dp"/>
+
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -44,7 +45,7 @@
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/light_green"
+                style="@style/Fragmentbackground"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            style="@style/card.bottom_nav"
             app:fabCradleMargin="10dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView

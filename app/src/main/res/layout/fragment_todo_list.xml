@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.todo.ui.Viewmodel" />
+            type="com.example.todo.ui.viewmodel.Viewmodel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragments.todoList.todoListFragment"
-        android:background="@color/light_green">
+        style="@style/Fragmentbackground">
 
         <include layout="@layout/view" />
 
